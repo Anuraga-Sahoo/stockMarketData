@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NSE Data</title>
+</head>
+<body>
+   hello
+
+  <script>
+   async function datafetch (){
+      let response = fetch('http://127.0.0.1:8000/indexapi') .then(response => response.json())
+    .then(data => {
+      console.log("Received data:", data); })
+      .catch((e)=> console.log(e))
+    }
+    datafetch()
+  </script>
+</body>
+</html>

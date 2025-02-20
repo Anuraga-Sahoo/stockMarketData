@@ -94,15 +94,21 @@ from flask import Flask, render_template, jsonify
 app = Flask(__name__)
 print(app)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 @app.route('/stockapi')
 def send_json():
-    stock_data = get_index_data(index_symbol, start_date , end_date)
-    return jsonify(stock_data)
+    index_data = get_index_data(index_symbol, start_date , end_date)
+    return jsonify(index_data)
 
 
 @app.route('/indexapi')
 def send_index_json():
-     index_data = get_stock_data(stock_symbol, start_date , end_date)
-     return jsonify(index_data)
+     stock_data = get_stock_data(stock_symbol, start_date , end_date)
+     return jsonify(stock_data)
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8000, debug=True)
