@@ -15,13 +15,14 @@ def get_index_data(index_symbol, start_date, end_date):
             'CLOSE_INDEX_VAL', 'LOW_INDEX_VAL', 'TRADED_QTY', 'TURN_OVER'
         ]
         data_frame = data_frame[required_columns]
-        data_frame['TIMESTAMP'] = pd.to_datetime(data_frame['TIMESTAMP'])
+        # data_frame['TIMESTAMP'] = pd.to_datetime(data_frame['TIMESTAMP'])
         
+        print("data frame ======= ",data_frame.to_dict(orient='records'))
         return data_frame.to_dict(orient='records')
         
     except Exception as e:
         print(f"Error fetching index data: {e}")
-        return None
+        return []
 
 @app.route('/')
 def index():
@@ -38,6 +39,7 @@ def handle_index():
         return jsonify({'error': 'Missing required parameters: symbol, start_date, end_date'}), 400
     
     data = get_index_data(indexsymbol, start_date, end_date)
+    
     return jsonify(data) if data else jsonify({'error': 'Failed to fetch index data'}) , 500
 
 if __name__ == '__main__':
