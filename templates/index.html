@@ -6,16 +6,9 @@
   <title>NSE Data</title>
 </head>
 <body>
-   hello
+  use the bellow string to get the data
 
-  <script>
-   async function datafetch (){
-      let response = fetch('http://127.0.0.1:8000/indexapi') .then(response => response.json())
-    .then(data => {
-      console.log("Received data:", data); })
-      .catch((e)=> console.log(e))
-    }
-    datafetch()
-  </script>
+   http://localhost:8000/api/index?symbol=NIFTY%20BANK&start_date=01-01-2024&end_date=14-01-2024
+ 
 </body>
 </html>
